@@ -23,7 +23,8 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 
 ## Rancangan Arsitektur dan Tabel Harga Spesifikasi VM
 - Berikut adalah rancangan arsitektur yang telah kami buat untuk final project kami
-![arsitektur]()
+  
+![Screenshot 2023-12-14 223353](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/4147a39c-5371-4680-9815-163c89d4eb86)
 - Kami memilih untuk menggunakan Digital Ocean sebagai lingkungan cloud yang akan kami gunakan. Berikut adalah tabel harga spesifikasi VM yang kami buat <br>
 ![tabel harga]()
 
