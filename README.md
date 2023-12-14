@@ -26,7 +26,8 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
   
 ![Screenshot 2023-12-14 223353](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/4147a39c-5371-4680-9815-163c89d4eb86)
 - Kami memilih untuk menggunakan Digital Ocean sebagai lingkungan cloud yang akan kami gunakan. Berikut adalah tabel harga spesifikasi VM yang kami buat <br>
-![tabel harga]()
+
+![Screenshot 2023-12-14 230921](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/ddac15e6-6d78-4025-ab05-7d078e95e0eb)
 
 ## Langkah Implementasi dan Konfigurasi Teknologi
 1. Buat database dan copy connection string
