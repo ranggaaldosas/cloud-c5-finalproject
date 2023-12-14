@@ -1,0 +1,36 @@
+# Load Balancer
+
+## Spesifikasi
+
+Load balancer kami buat dengan menggunakan image Ubuntu 23.10 dan memiliki spesifikasi 1 CPU, 1 GB Memory, dan 25 GB SSD. Pricing yang dimiliki load balancer kami ada di angka 6 dolar.
+
+## Konfigurasi
+
+Load balancer kami menggunakan nginx. Pertama-tama, lakukan ```sudo apt-get update``` dan lakukan instalasi nginx dengan menjalankan command ```sudo apt-get install nginx -y```. 
+
+Setelah berhasil, buatlah konfigurasi nginx untuk membuat load balancer. Konfigurasi nginx kami adalah sebagai berikut:
+
+```
+upstream app {
+    server 178.128.88.111:8000;
+    server 139.59.243.183:8000;
+}
+
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        proxy_pass http://app;
+    }
+}
+```
+
+Konfigurasi kami buat di direktori 
+```/etc/nginx/sites-enabled``` dengan cara melakukan symlink dengan command ```sudo ln -s /etc/nginx/sites-available/loadbalancer /etc/nginx/sites-enabled/```. 
+
+![Screenshot 2023-12-15 005928](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/105dcab0-f22f-45e9-bc66-1beb114c97b0)
+
+Selanjutnya, restart service nginx dan pastikan nginx sudah berjalan dengan menjalankan command ```sudo service nginx status```.
+
+![Screenshot 2023-12-15 010221](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/338af52f-08bd-4e35-a490-9d2862e0af78)
