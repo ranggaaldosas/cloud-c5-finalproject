@@ -30,8 +30,42 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 ![Screenshot 2023-12-14 230921](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/ddac15e6-6d78-4025-ab05-7d078e95e0eb)
 
 ## Langkah Implementasi dan Konfigurasi Teknologi
-1. Buat database dan copy connection string
-![database]()
+
+### Setup Database
+
+klik tombol create dan pilih yang databases
+
+<img width="363" alt="Untitled" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/07bf63c7-b699-4bb6-8a55-3c1c7d92d94a">
+
+kemudian pilih datacenter terdekat, disini kami pilih singapura dan untuk database enginenya kami pilih mongodb 
+
+<img width="1280" alt="Untitled 1" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/a7e7cc6b-4e10-4280-bcad-96646a13ab6d">
+
+selanjutnya kita select budget sesuai dengan rancangan arsitekturnya yaitu $15
+
+<img width="421" alt="Untitled 2" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/7a635393-28fe-4ce2-9156-2a4b1d934d2a">
+
+Selanjutnya klik Create Database Cluster. Lalu masukkan IP Worker dan masukkan IP laptop yang digunakan untuk mengakses. Untuk mengecek IP laptop bisa menggunakan link berikut [https://whatismyipaddress.com/](https://whatismyipaddress.com/)
+
+Masukkan pada restricted inbound connections seperti berikut 
+
+<img width="1000" alt="Untitled 3" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/a2164faf-9e04-48f3-a2e0-5a0f61258f2a">
+
+Lalu pada connection details ganti settingan pada connection string dan klik copy 
+
+<img width="462" alt="Untitled 4" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/0a8760b4-221e-4994-ad30-116854a1e815">
+
+Jangan lupa untuk mengganti <replace-with-your-password> dengan password yang didapatkan saat membuat database. Kemudian install mongo DBCompass pada link berikut [https://www.mongodb.com/products/tools/compass](https://www.mongodb.com/products/tools/compass) . Setelah selesai instalasi, bukalah mongoDB compass dan buatlah new connection. Kemudian, masukkan connection string beserta password yang sudah kita copy tadi seperti berikut dan klik connect. 
+
+<img width="601" alt="Untitled 5" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/870d209d-f78f-4970-93ab-66b1fa30dd21">
+
+Jangan lupa masukkan nama database (myDatabases) dan nama collection (orders_db) Apabila sudah database akan tersimpan seperti berikut 
+
+![Untitled 6](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/998623c4-4a63-4815-808d-a407186b9394)
+
+Terakhir, untuk menggunakan connection string untuk worker database yang sebelumnya admin bisa diubah dengan myDatabases yang sudah dibuat sebelumnya 
+
+<img width="455" alt="Untitled 7" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/14a796a0-50ce-4a15-a420-111cbc88db86">
 
 2. Create new connection dengan string database yang sudah di-copy sebelumnya
 ![new connection]()
