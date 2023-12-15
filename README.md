@@ -89,19 +89,20 @@ Terakhir, untuk menggunakan connection string untuk worker database yang sebelum
 
 ## Hasil Pengujian Setiap Endpoint
 1. Get All Orders
-![get all orders]()
+![WhatsApp Image 2023-12-15 at 12 05 40 AM](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107459188/24b8b371-f645-42d9-b258-f860334701c4)
 
 2. Get a Specific Orders by ID
-![get order by id]()
+![WhatsApp Image 2023-12-15 at 12 06 25 AM](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107459188/3ee7e35d-7df9-4ea0-9d58-e01b1f1e1947)
 
 3. Create a New Order
-![create]()
+![WhatsApp Image 2023-12-15 at 12 07 01 AM](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107459188/f5d0d0bc-99df-49bd-ba5d-151993529b44)
 
 4. Update an Order by ID
-![update order]()
+![WhatsApp Image 2023-12-15 at 12 07 33 AM](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107459188/c81ce927-6fd7-420c-aec7-6e3783fa2ad2)
 
 5. Delete an Order by ID
-![delete]()
+![WhatsApp Image 2023-12-15 at 12 08 04 AM](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107459188/06451e4d-245e-4fc6-a3b2-5eb8b871fb3a)
+
 
 ## Hasil Pengujian dan Analisis Loadtesting Locust
 1. Endpoint Get Order
