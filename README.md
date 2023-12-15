@@ -82,22 +82,28 @@ Terakhir, untuk menggunakan connection string untuk worker database yang sebelum
 ### Set Up Worker
 
 Pada digital ocean, klik tombol create dan pilih droplets
+
 ![WhatsApp Image 2023-12-15 at 13 11 31_83e71d96](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/5c44c5b2-99e3-4fc7-9ca8-6eb515c40f2f)
 
 Region yang dipilih adalah Singapura karena merupakan negara terdekat 
+
 ![WhatsApp Image 2023-12-15 at 13 14 04_ececae17](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/ce15fae6-6079-41b9-a31b-5c1266958e6c)
 
 Kemudian, pilih Image. Image yang kami gunakan adalah Ubuntu versi 22.04 (LTS) x64 
+
 ![WhatsApp Image 2023-12-15 at 13 14 16_0ffa9122](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/3daed0a5-c9cd-4e5d-a004-4893b086da83)
 
 Selanjutnya, pilih Size. Di sini, kami menentukan Droplet Type dan CPU untuk droplet yang akan dijadikan worker. Sesuai dengan rancangan,  kami memilih droplet dengan spesifikasi 2GB/2CPUs seharga $12
+
 ![WhatsApp Image 2023-12-15 at 14 06 52_c02f7135](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/5b919633-6daa-4705-9c55-4d21e75183e8)
 
 
 Untuk authentication mode, kami memilih menggunakan password
+
 ![WhatsApp Image 2023-12-15 at 13 19 36_c0ee6351](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/1c881d72-16ea-418a-82e5-ad390619b15d)
 
 Terakhir, beri nama droplet dan tekan tombol Create Droplet untuk membuat droplet
+
 ![WhatsApp Image 2023-12-15 at 14 06 10_55785b63](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/b40358da-0337-4d5b-985b-6405bfc9b709)
 
 
@@ -105,6 +111,7 @@ Masuk ke droplet yang sudah dibuat melalui SSH
 ```root@178.128.88.111```
 
 Kemudian masukkan password yang tadi sudah dibuat
+
 ![WhatsApp Image 2023-12-15 at 13 56 00_3bdbc203](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/c5c8dfcb-3f00-436f-9640-65e203225898)
 
 Jika sudah masuk, lakukan langkah-langkah berikut untuk melakukan set-up worker pada droplet
@@ -249,12 +256,14 @@ Menjalankan container :
 
 Kita bisa melihat apakah worker sudah berhasil berjalan melalui command
 ```docker ps``` Jika berhasil, maka akan keluar seperti berikut
+
 ![WhatsApp Image 2023-12-15 at 13 46 07_e316005a](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/7dce9f46-9513-4634-acf2-974372e17ee0)
 
 Untuk memeriksa apakah worker sudah berjalan di IP, port, dan endpoint yang sesuai, kita bisa mengeceknya melalui Insomnia/Postman
 
 Di sini, kami memeriksa menggunakan endpoint GET /orders
-![WhatsApp Image 2023-12-15 at 13 47 05_e326853a](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/0f8d5b38-1106-4c44-bd4c-ede06de20ab1)
+
+![WhatsApp Image 2023-12-15 at 14 05 29_b517e646](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/025fbc28-c0d5-459b-803d-df8135a87393)
 
 Lakukan hal yang sama pada droplet lain untuk mengsetup worker, jangan lupa untuk menyesuaikan nama sesuai kebutuhan.
 
