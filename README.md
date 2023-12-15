@@ -107,9 +107,11 @@ Berikut ini adalah hasil screenshot dari testing arsitektur pertama
 - Peak Concurrency Maksimum (spawn rate 25, load testing 60 detik)
 <p align="center">
     <img src="https://i.ibb.co/kyrXyFJ/sr-25.jpg" width=480 length=200>
+
 - Peak Concurrency Maksimum (spawn rate 50, load testing 60 detik)
 <p align="center">
     <img src="https://i.ibb.co/8rjk3nn/sr-50.jpg" width=480 length=200>
+
 - Peak Concurrency Maksimum (spawn rate 100, load testing 60 detik)
 <p align="center">
     <img src="https://i.ibb.co/PDGv5Vg/sr-100.jpg" width=480 length=200>
