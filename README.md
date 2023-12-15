@@ -11,7 +11,7 @@
 | [Tarisha Icha](https://www.github.com/tarishaicha)   | 502721161 | Worker |
 | [Annisa Ghina](https://www.github.com/anisaghinasalsabila)   | 502721162 | Worker |
 | [Dzakirozaan Uzlah Wasata](https://www.github.com/dibazalfa)   | 502721166 | Load Balancer |
-| [Athaya Rayhan](https://www.github.com/reyhanqb)   | 502721167 | Load Balancer |
+| [Athaya Reyhan](https://www.github.com/reyhanqb)   | 502721167 | Load Balancer |
 
 ---
 ## Permasalahan
@@ -78,26 +78,6 @@ Jangan lupa masukkan nama database (myDatabases) dan nama collection (orders_db)
 Terakhir, untuk menggunakan connection string untuk worker database yang sebelumnya admin bisa diubah dengan myDatabases yang sudah dibuat sebelumnya 
 
 <img width="455" alt="Untitled 7" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/14a796a0-50ce-4a15-a420-111cbc88db86">
-
-2. Create new connection dengan string database yang sudah di-copy sebelumnya
-![new connection]()
-
-3. Buat database sesuai dengan variabel yang sudah dibuat di dalam app.py
-![database app.py]()
-
-4. Create database baru dengan collection order, add data (import json file)lalu pilih file orders.json yang berisi data-data yang akan dimasukan ke database<br>
-![add data]()
-
-5. Run app.py hingga muncul url-nya
-![run app.py]()
-
-6. Untuk mengecek database-nya bisa menggunakan postman, request ke url/orders. Jika statusnya sudah 200 ok, maka database sudah bisa berjalan dengan normal
-![postman]()
-
-7. Deploy VM untuk worker dengan installasi requirement yang diperlukan di worker
-![deploy vm]()
-
-8. Jika tidak ada error, maka worker sudah berjalan
    
 ### Set Up Worker
 
@@ -110,14 +90,16 @@ Region yang dipilih adalah Singapura karena merupakan negara terdekat
 Kemudian, pilih Image. Image yang kami gunakan adalah Ubuntu versi 22.04 (LTS) x64 
 ![WhatsApp Image 2023-12-15 at 13 14 16_0ffa9122](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/3daed0a5-c9cd-4e5d-a004-4893b086da83)
 
-Selanjutnya, pilih Size. Di sini, kami menentukan Droplet Type dan CPU untuk droplet yang akan dijadikan worker. Sesuai dengan rancangan,  kami memilih droplet dengan spesifikasi 2GB/2CPUs seharga $18
-![WhatsApp Image 2023-12-15 at 13 16 46_4d5067d8](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/66c37080-095f-4fdd-b629-280de5031a4a)
+Selanjutnya, pilih Size. Di sini, kami menentukan Droplet Type dan CPU untuk droplet yang akan dijadikan worker. Sesuai dengan rancangan,  kami memilih droplet dengan spesifikasi 2GB/2CPUs seharga $12
+![WhatsApp Image 2023-12-15 at 14 06 52_c02f7135](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/5b919633-6daa-4705-9c55-4d21e75183e8)
+
 
 Untuk authentication mode, kami memilih menggunakan password
 ![WhatsApp Image 2023-12-15 at 13 19 36_c0ee6351](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/1c881d72-16ea-418a-82e5-ad390619b15d)
 
 Terakhir, beri nama droplet dan tekan tombol Create Droplet untuk membuat droplet
-![WhatsApp Image 2023-12-15 at 13 55 01_ee6e41b1](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/3d5a0992-cfc0-4a0f-bb19-f7de1a316598)
+![WhatsApp Image 2023-12-15 at 14 06 10_55785b63](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/b40358da-0337-4d5b-985b-6405bfc9b709)
+
 
 Masuk ke droplet yang sudah dibuat melalui SSH
 ```root@178.128.88.111```
@@ -275,6 +257,39 @@ Di sini, kami memeriksa menggunakan endpoint GET /orders
 ![WhatsApp Image 2023-12-15 at 13 47 05_e326853a](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/0f8d5b38-1106-4c44-bd4c-ede06de20ab1)
 
 Lakukan hal yang sama pada droplet lain untuk mengsetup worker, jangan lupa untuk menyesuaikan nama sesuai kebutuhan.
+
+### Set Up LoadBalancer
+
+### Spesifikasi
+
+Load balancer kami buat dengan menggunakan image Ubuntu 23.10 dan memiliki spesifikasi 1 CPU, 1 GB Memory, dan 25 GB SSD. Pricing yang dimiliki load balancer kami ada di angka 6 dolar.
+
+### Konfigurasi
+
+1. Pertama-tama klik tombol Create pada navbar Digital Ocean dan pilih menu Load Balancer.
+
+2. Kemudian, pilih region sesuai dengan region kita saat ini.
+
+![Screenshot 2023-12-15 011745](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/74db4e10-fa6d-4b5c-b38c-080abc726787)
+
+3. Lalu sesuaikan jumlah droplet yang ingin terhubung ke Load Balancer. Pada arsitektur yang kami buat, kami menggunakan 2 worker.
+
+![Screenshot 2023-12-15 011947](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/19f29c14-42d5-4167-af69-e08b11e87af0)
+
+4. Setelah itu atur forwarding rules untuk melakukan konfigurasi port dari Load Balancer menuju ke 2 worker. Disini kami menggunakan port 8000 untuk keduanya.
+
+![Screenshot 2023-12-15 012235](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/dd1488be-084f-4a7a-a130-85d9ddc345ef)
+
+5. Terakhir berikan nama yang sesuai untuk Load Balancer yang ingin kita buat, kemudian klik Create untuk membuat Load Balancer.
+
+![Screenshot 2023-12-15 012415](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/4c1d07b2-0fe4-4817-a2a7-71a58af1ce5a)
+
+---
+
+Setelah Load Balancer berhasil dibuat, kita dapat mengakses dashboard Load Balancer untuk melihat status droplet yang terhubung ke Load Balancer kita. Apabila Load Balancer sudah berjalan dan tidak ada masalah pada kedua node, maka harusnya health check di dashboard bernilai 100%.
+
+![Screenshot 2023-12-15 012711](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/33996ea1-1765-473e-90bb-bf3e70e7e28a)
+
 
 ## Hasil Pengujian Setiap Endpoint
 1. Get All Orders
