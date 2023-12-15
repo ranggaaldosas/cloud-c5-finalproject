@@ -22,15 +22,15 @@ Pada suatu saat teman anda ingin mengajak anda memulai bisnis di bidang digital 
 
 Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutuhan aplikasi tersebut. Apabila dana maksimal yang diberikan adalah 1 juta rupiah per bulan (65 US$) konfigurasi cloud terbaik seperti apa yang bisa dibuat?
 
-## 2. Rancangan Arsitektur dan Tabel Harga Spesifikasi VM
+## Rancangan Arsitektur dan Tabel Harga Spesifikasi VM
 
-- Berikut adalah berbagai rancangan arsitektur yang telah kami buat untuk final project kami
+- Berikut adalah rancangan arsitektur yang telah kami buat untuk final project kami
 
 ![Screenshot 2023-12-14 223353](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/4147a39c-5371-4680-9815-163c89d4eb86)
 
 - Kami memilih untuk menggunakan Digital Ocean sebagai lingkungan cloud yang akan kami gunakan. Berikut adalah tabel harga spesifikasi VM yang kami buat <br>
 
-![Screenshot 2023-12-14 230921](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/ddac15e6-6d78-4025-ab05-7d078e95e0eb)
+  ![Screenshot 2023-12-14 230921](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/ddac15e6-6d78-4025-ab05-7d078e95e0eb)
 
 ## Langkah Implementasi dan Konfigurasi Teknologi
 
@@ -69,26 +69,6 @@ Jangan lupa masukkan nama database (myDatabases) dan nama collection (orders_db)
 Terakhir, untuk menggunakan connection string untuk worker database yang sebelumnya admin bisa diubah dengan myDatabases yang sudah dibuat sebelumnya
 
 <img width="455" alt="Untitled 7" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/14a796a0-50ce-4a15-a420-111cbc88db86">
-
-2. Create new connection dengan string database yang sudah di-copy sebelumnya
-   ![new connection]()
-
-3. Buat database sesuai dengan variabel yang sudah dibuat di dalam app.py
-   ![database app.py]()
-
-4. Create database baru dengan collection order, add data (import json file)lalu pilih file orders.json yang berisi data-data yang akan dimasukan ke database<br>
-   ![add data]()
-
-5. Run app.py hingga muncul url-nya
-   ![run app.py]()
-
-6. Untuk mengecek database-nya bisa menggunakan postman, request ke url/orders. Jika statusnya sudah 200 ok, maka database sudah bisa berjalan dengan normal
-   ![postman]()
-
-7. Deploy VM untuk worker dengan installasi requirement yang diperlukan di worker
-   ![deploy vm]()
-
-8. Jika tidak ada error, maka worker sudah berjalan
 
 ## Hasil Pengujian Setiap Endpoint
 
