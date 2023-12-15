@@ -82,6 +82,193 @@ Terakhir, untuk menggunakan connection string untuk worker database yang sebelum
 
 <img width="455" alt="Untitled 7" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/14a796a0-50ce-4a15-a420-111cbc88db86">
 
+### Set Up Worker
+
+Pada digital ocean, klik tombol create dan pilih droplets
+
+![WhatsApp Image 2023-12-15 at 13 11 31_83e71d96](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/5c44c5b2-99e3-4fc7-9ca8-6eb515c40f2f)
+
+Region yang dipilih adalah Singapura karena merupakan negara terdekat
+
+![WhatsApp Image 2023-12-15 at 13 14 04_ececae17](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/ce15fae6-6079-41b9-a31b-5c1266958e6c)
+
+Kemudian, pilih Image. Image yang kami gunakan adalah Ubuntu versi 22.04 (LTS) x64
+
+![WhatsApp Image 2023-12-15 at 13 14 16_0ffa9122](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/3daed0a5-c9cd-4e5d-a004-4893b086da83)
+
+Selanjutnya, pilih Size. Di sini, kami menentukan Droplet Type dan CPU untuk droplet yang akan dijadikan worker. Sesuai dengan rancangan, kami memilih droplet dengan spesifikasi 2GB/2CPUs seharga $12
+
+![WhatsApp Image 2023-12-15 at 14 06 52_c02f7135](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/5b919633-6daa-4705-9c55-4d21e75183e8)
+
+Untuk authentication mode, kami memilih menggunakan password
+
+![WhatsApp Image 2023-12-15 at 13 19 36_c0ee6351](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/1c881d72-16ea-418a-82e5-ad390619b15d)
+
+Terakhir, beri nama droplet dan tekan tombol Create Droplet untuk membuat droplet
+
+![WhatsApp Image 2023-12-15 at 14 06 10_55785b63](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/b40358da-0337-4d5b-985b-6405bfc9b709)
+
+Masuk ke droplet yang sudah dibuat melalui SSH
+`root@178.128.88.111`
+
+Kemudian masukkan password yang tadi sudah dibuat
+
+![WhatsApp Image 2023-12-15 at 13 56 00_3bdbc203](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/c5c8dfcb-3f00-436f-9640-65e203225898)
+
+Jika sudah masuk, lakukan langkah-langkah berikut untuk melakukan set-up worker pada droplet
+
+`nano setup-worker.sh`
+
+Masukkan code berikut pada file `setup-worker.sh`
+
+```
+#!/bin/bash
+
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+sudo systemctl status docker
+
+mkdir worker1
+cd worker1
+
+echo 'FROM python:3.9-slim
+WORKDIR /app
+COPY . /app
+RUN pip install -r requirements.txt
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]
+' > Dockerfile
+
+echo 'version: '3.1'
+
+services:
+  worker1:
+    build: /root/worker1
+    restart: always
+    ports:
+      - "8080:8000"
+' > docker-compose.yml
+
+echo 'fastapi==0.78.0
+uvicorn==0.18.2
+pymongo
+pydantic
+uuid
+Flask
+Flask-PyMongo
+gunicorn
+' > requirements.txt
+
+echo 'from flask import Flask, jsonify, request
+from flask_pymongo import PyMongo
+from bson import ObjectId
+
+app = Flask(__name__)
+
+# Configuration for MongoDB
+app.config['MONGO_URI'] = 'mongodb+srv://doadmin:c74HW9J20y1vmz35@db-mongodb-sgp1-55072-cf745936.mongo.ondigitalocean.com/myDatabases?replicaSet=db-mongodb-sgp1-55072&tls=true&authSource=admin'
+mongo = PyMongo(app)
+
+# Routes
+
+# Get all orders
+@app.route('/orders', methods=['GET'])
+def get_orders():
+    orders = mongo.db.orders.find()
+    orders_list = []
+    for order in orders:
+        order['_id'] = str(order['_id'])  # Convert ObjectId to string
+        orders_list.append(order)
+    return jsonify({"orders": orders_list})
+
+# Get a specific order by ID
+@app.route('/orders/<string:order_id>', methods=['GET'])
+def get_order(order_id):
+    order = mongo.db.orders.find_one({'_id': ObjectId(order_id)})
+    if order:
+        order['_id'] = str(order['_id'])  # Convert ObjectId to string
+        return jsonify({"order": order})
+    else:
+        return jsonify({"message": "Order not found"}), 404
+
+# Create a new order
+@app.route('/orders', methods=['POST'])
+def create_order():
+    data = request.json
+    new_order = {
+        'product': data['product'],
+        'quantity': data['quantity'],
+        'customer_name': data['customer_name'],
+        'customer_address': data['customer_address']
+    }
+    result = mongo.db.orders.insert_one(new_order)
+    new_order['_id'] = str(result.inserted_id)  # Convert ObjectId to string
+    return jsonify({"message": "Order created successfully", "order": new_order})
+
+# Update an order by ID
+@app.route('/orders/<string:order_id>', methods=['PUT'])
+def update_order(order_id):
+    data = request.json
+    updated_order = {
+        'product': data.get('product'),
+        'quantity': data.get('quantity'),
+        'customer_name': data.get('customer_name'),
+        'customer_address': data.get('customer_address')
+    }
+    mongo.db.orders.update_one({'_id': ObjectId(order_id)}, {'$set': updated_order})
+    updated_order['_id'] = order_id
+    return jsonify({"message": "Order updated successfully", "order": updated_order})
+
+# Delete an order by ID
+@app.route('/orders/<string:order_id>', methods=['DELETE'])
+def delete_order(order_id):
+    result = mongo.db.orders.delete_one({'_id': ObjectId(order_id)})
+    if result.deleted_count > 0:
+        return jsonify({"message": "Order deleted successfully"})
+    else:
+        return jsonify({"message": "Order not found"}), 404
+
+if __name__ == '__main__':
+    app.run(debug=True)
+' > app.py
+
+cd /root
+```
+
+Kemudian, pada direktori root jalankan command
+
+`chmod +x worker-setup.sh`
+
+`./worker-setup.sh`
+
+Setelah command dijalankan, worker akan ter set up hanya saja belum dijalankan. Worker akan dijalankan menggunakan docker dengan command berikut
+
+(command dijalankan pada direktori worker1)
+
+`cd worker1`
+
+Membuat docker images :
+`docker build -t worker1-app -f Dockerfile .`
+
+Menjalankan container :
+`docker run -p 8000:8000 -d worker1-app`
+
+Kita bisa melihat apakah worker sudah berhasil berjalan melalui command
+`docker ps` Jika berhasil, maka akan keluar seperti berikut
+
+![WhatsApp Image 2023-12-15 at 13 46 07_e316005a](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/7dce9f46-9513-4634-acf2-974372e17ee0)
+
+Untuk memeriksa apakah worker sudah berjalan di IP, port, dan endpoint yang sesuai, kita bisa mengeceknya melalui Insomnia/Postman
+
+Di sini, kami memeriksa menggunakan endpoint GET /orders
+
+![WhatsApp Image 2023-12-15 at 14 05 29_b517e646](https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/103043684/025fbc28-c0d5-459b-803d-df8135a87393)
+
+Lakukan hal yang sama pada droplet lain untuk mengsetup worker, jangan lupa untuk menyesuaikan nama sesuai kebutuhan.
+
 ### Set Up LoadBalancer
 
 ### Spesifikasi
