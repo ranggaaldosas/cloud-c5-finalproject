@@ -22,7 +22,8 @@ Pada suatu saat teman anda ingin mengajak anda memulai bisnis di bidang digital 
 Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutuhan aplikasi tersebut. Apabila dana maksimal yang diberikan adalah 1 juta rupiah per bulan (65 US$) konfigurasi cloud terbaik seperti apa yang bisa dibuat?
 
 ## Rancangan Arsitektur dan Tabel Harga Spesifikasi VM
-- Berikut adalah rancangan arsitektur yang telah kami buat untuk final project kami
+- Berikut adalah rancangan arsitektur yang telah kami buat untuk final project kami.
+  
   Terdapat 3 rancangan arsitektur yang kami buat:
   1. Database dan Worker
 
