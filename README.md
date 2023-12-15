@@ -29,7 +29,7 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
      ![WhatsApp Image 2023-12-15 at 13 42 25](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/fc243b87-3da4-4585-b601-15f706f0eaf2)
   3. Database, Worker 1, Worker 2, dan Load Balancer (Costum Droplet)
 
-     ![Screenshot 2023-12-14 223353](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/4147a39c-5371-4680-9815-163c89d4eb86)
+     ![Screenshot 2023-12-15 135959](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/851413a1-9fc2-4025-b54d-83eca06eae92)
   5. Database, Worker 1, Worker 2, dan Load Balancer (Digital Ocean)
 
      ![WhatsApp Image 2023-12-15 at 13 46 01](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/5ac18c2a-ef2a-42f3-9b57-285f38ab13a3)
