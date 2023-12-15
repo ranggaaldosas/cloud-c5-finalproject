@@ -82,6 +82,38 @@ Terakhir, untuk menggunakan connection string untuk worker database yang sebelum
 
 <img width="455" alt="Untitled 7" src="https://github.com/ranggaaldosas/cloud-c5-finalproject/assets/107627453/14a796a0-50ce-4a15-a420-111cbc88db86">
 
+### Set Up LoadBalancer
+
+### Spesifikasi
+
+Load balancer kami buat dengan menggunakan image Ubuntu 23.10 dan memiliki spesifikasi 1 CPU, 1 GB Memory, dan 25 GB SSD. Pricing yang dimiliki load balancer kami ada di angka 6 dolar.
+
+### Konfigurasi
+
+1. Pertama-tama klik tombol Create pada navbar Digital Ocean dan pilih menu Load Balancer.
+
+2. Kemudian, pilih region sesuai dengan region kita saat ini.
+
+![Screenshot 2023-12-15 011745](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/74db4e10-fa6d-4b5c-b38c-080abc726787)
+
+3. Lalu sesuaikan jumlah droplet yang ingin terhubung ke Load Balancer. Pada arsitektur yang kami buat, kami menggunakan 2 worker.
+
+![Screenshot 2023-12-15 011947](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/19f29c14-42d5-4167-af69-e08b11e87af0)
+
+4. Setelah itu atur forwarding rules untuk melakukan konfigurasi port dari Load Balancer menuju ke 2 worker. Disini kami menggunakan port 8000 untuk keduanya.
+
+![Screenshot 2023-12-15 012235](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/dd1488be-084f-4a7a-a130-85d9ddc345ef)
+
+5. Terakhir berikan nama yang sesuai untuk Load Balancer yang ingin kita buat, kemudian klik Create untuk membuat Load Balancer.
+
+![Screenshot 2023-12-15 012415](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/4c1d07b2-0fe4-4817-a2a7-71a58af1ce5a)
+
+---
+
+Setelah Load Balancer berhasil dibuat, kita dapat mengakses dashboard Load Balancer untuk melihat status droplet yang terhubung ke Load Balancer kita. Apabila Load Balancer sudah berjalan dan tidak ada masalah pada kedua node, maka harusnya health check di dashboard bernilai 100%.
+
+![Screenshot 2023-12-15 012711](https://github.com/reyhanqb/Jarkom-IT09-2023/assets/107137535/33996ea1-1765-473e-90bb-bf3e70e7e28a)
+
 ## Hasil Pengujian Setiap Endpoint
 
 1. Get All Orders
@@ -104,7 +136,7 @@ Terakhir, untuk menggunakan connection string untuk worker database yang sebelum
 Berikut ini merupakan hasil dari 3 rancangan arsitektur kelompok kami
 
 <p align="center">
-    <img src="https://i.ibb.co/bXd5DF0/Screenshot-20.png">
+    <img src="https://i.ibb.co/gjHT8bt/Screenshot-22.png">
 
 Hasil terbaik didapatkan oleh rancangan arsitektur pertama yaitu
 
