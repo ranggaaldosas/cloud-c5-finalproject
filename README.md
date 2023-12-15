@@ -24,9 +24,21 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 
 ## Rancangan Arsitektur dan Tabel Harga Spesifikasi VM
 
-- Berikut adalah rancangan arsitektur yang telah kami buat untuk final project kami
+- Berikut adalah rancangan arsitektur yang telah kami buat untuk final project kami.
 
-![Screenshot 2023-12-14 223353](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/4147a39c-5371-4680-9815-163c89d4eb86)
+  Terdapat 3 rancangan arsitektur yang kami buat:
+
+  1. Database dan Worker
+
+  ![Screenshot 2023-12-15 140515](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/dc0ef4b6-842f-4ef8-8495-b8b41dbe9645)
+
+  2. Database, Worker 1, Worker 2, dan Load Balancer (Costum Droplet)
+
+  ![Screenshot 2023-12-15 140610](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/439ab4da-2dfe-4b2d-962b-7d876cb24398)
+
+  3. Database, Worker 1, Worker 2, dan Load Balancer (Digital Ocean)
+
+  ![Screenshot 2023-12-15 140715](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/61a54b9a-ea38-4379-a2d7-5c95dfbfc93d)
 
 - Kami memilih untuk menggunakan Digital Ocean sebagai lingkungan cloud yang akan kami gunakan. Berikut adalah tabel harga spesifikasi VM yang kami buat <br>
 
@@ -120,8 +132,6 @@ Berikut ini adalah hasil screenshot dari testing arsitektur pertama
 
 - Setelah melakukan perbandingan harga digital ocean dan azure, harga untuk digital ocean lebih murah
 - Setelah percobaan yang kami lakukan berulang kali dengan menggunakan 3 topologi yang berbeda, kita mendapat kesimpulan:
-
-![topologi]()
 
 a.) Topologi 1
 menggunakan worker yang spesifikasinya sangat tinggi sehingga dapat menangani request user yang banyak
