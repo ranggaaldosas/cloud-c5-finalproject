@@ -104,7 +104,7 @@ Terakhir, untuk menggunakan connection string untuk worker database yang sebelum
 Berikut ini merupakan hasil dari 3 rancangan arsitektur kelompok kami
 
 <p align="center">
-    <img src="https://i.ibb.co/bXd5DF0/Screenshot-20.png" width=500 length=500>
+    <img src="https://i.ibb.co/bXd5DF0/Screenshot-20.png">
 
 Hasil terbaik didapatkan oleh rancangan arsitektur pertama yaitu
 
