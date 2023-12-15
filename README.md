@@ -25,13 +25,17 @@ Kemudian anda diminta untuk mendesain arsitektur cloud yang sesuai dengan kebutu
 - Berikut adalah rancangan arsitektur yang telah kami buat untuk final project kami
   Terdapat 3 rancangan arsitektur yang kami buat:
   1. Database dan Worker
+
      ![WhatsApp Image 2023-12-15 at 13 42 25](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/fc243b87-3da4-4585-b601-15f706f0eaf2)
-  2. Database, Worker 1, Worker 2, dan Load Balancer (Costum Droplet)
+  3. Database, Worker 1, Worker 2, dan Load Balancer (Costum Droplet)
+
      ![Screenshot 2023-12-14 223353](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/4147a39c-5371-4680-9815-163c89d4eb86)
-  3. Database, Worker 1, Worker 2, dan Load Balancer (Digital Ocean)
+  5. Database, Worker 1, Worker 2, dan Load Balancer (Digital Ocean)
+
      ![WhatsApp Image 2023-12-15 at 13 46 01](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/5ac18c2a-ef2a-42f3-9b57-285f38ab13a3)
      
 - Kami memilih untuk menggunakan Digital Ocean sebagai lingkungan cloud yang akan kami gunakan. Berikut adalah tabel harga spesifikasi VM yang kami buat <br>
+
   ![Screenshot 2023-12-14 230921](https://github.com/anisaghinasalsabila/pemrograman-integratif/assets/71119774/ddac15e6-6d78-4025-ab05-7d078e95e0eb)
 
 ## Langkah Implementasi dan Konfigurasi Teknologi
